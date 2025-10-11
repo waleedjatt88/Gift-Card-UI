@@ -1,19 +1,32 @@
 // src/components/common/TextEditor.jsx
+
 import React from 'react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css'; // import styles
+import SunEditor from 'suneditor-react';
+import 'suneditor/dist/css/suneditor.min.css'; // SunEditor ke styles ko import karein
 
 const TextEditor = ({ value, onChange }) => {
-  const modules = {
-    toolbar: [
-      [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-      ['link', 'image'],
-      ['clean']
-    ],
-  };
-  return <ReactQuill theme="snow" value={value} onChange={onChange} modules={modules} />;
+  return (
+    <SunEditor
+      setContents={value}
+      onChange={onChange}
+      setOptions={{
+        height: 250,
+        buttonList: [
+          // Yeh toolbar ke saare options hain, aap inhein kam ya zyada kar sakte hain
+          ['undo', 'redo'],
+          ['font', 'fontSize', 'formatBlock'],
+          ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
+          ['fontColor', 'hiliteColor', 'textStyle'],
+          ['removeFormat'],
+          '/', // Toolbar mein line break
+          ['outdent', 'indent'],
+          ['align', 'horizontalRule', 'list', 'lineHeight'],
+          ['table', 'link', 'image'],
+          ['fullScreen', 'showBlocks', 'codeView'],
+        ],
+      }}
+    />
+  );
 };
 
 export default TextEditor;

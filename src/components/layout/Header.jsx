@@ -1,13 +1,14 @@
 // src/components/layout/Header.jsx
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react'; // <-- useState, useEffect, useRef ko import kiya
 import styled from 'styled-components';
 import { FiBell, FiChevronDown } from 'react-icons/fi';
-import avatar from '../../assets/images/avatar.png'; // Make sure you have an avatar image here
+import avatar from '../../assets/images/avatar.png';
+import NotificationsDropdown from './NotificationsDropdown'; // <-- Naya component import kiya
 
 const HeaderContainer = styled.header`
   display: flex;
-  justify-content: flex-end; /* Align items to the right */
+  justify-content: flex-end;
   align-items: center;
   padding: 1rem 0;
   margin-bottom: 2rem;
@@ -17,13 +18,13 @@ const HeaderContainer = styled.header`
 const ActionItems = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem; /* Space between notification and profile */
+  gap: 1rem;
+  position: relative; /* Dropdown ko position dene ke liye yeh zaroori hai */
 `;
 
-// NEW: Common style for both icon boxes
 const IconBox = styled.div`
   background-color: #ffffff;
-  border: 1px solid #ffffff; /* Light border */
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
   padding: 10px;
   position: relative;
@@ -32,12 +33,10 @@ const IconBox = styled.div`
   align-items: center;
   justify-content: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  #ffffff; /* Icon color */
+  color: #4b5563;
 `;
 
 const NotificationWrapper = styled(IconBox)`
-  /* This inherits all styles from IconBox */
-  
   .badge {
     position: absolute;
     top: -6px;
@@ -52,7 +51,7 @@ const NotificationWrapper = styled(IconBox)`
     justify-content: center;
     font-size: 0.75rem;
     font-weight: bold;
-    border: 2px solid white; /* Adds a nice touch */
+    border: 2px solid white;
   }
 `;
 
@@ -61,7 +60,7 @@ const ProfileWrapper = styled.div`
   align-items: center;
   gap: 10px;
   background-color: #ffffff;
-  border: 1px solid #ffffff;
+  border: 1px solid #e5e7eb;
   padding: 8px 12px;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
@@ -76,14 +75,35 @@ const Avatar = styled.img`
 
 const AdminName = styled.span`
   font-weight: 600;
-  color: #374151; /* Darker text color */
+  color: #374151;
 `;
 
+// --- COMPONENT ---
+
 const Header = () => {
+  const [isNotificationsOpen, setNotificationsOpen] = useState(false);
+  const dropdownRef = useRef(null); // Ref for the dropdown container
+
+  // "Click outside" ko handle karne ke liye
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setNotificationsOpen(false);
+      }
+    }
+    // Event listener add karein
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Cleanup: component unmount hone par listener hata dein
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
+
   return (
     <HeaderContainer>
       <ActionItems>
-        <NotificationWrapper>
+        {/* Notification bell par click se dropdown toggle hoga */}
+        <NotificationWrapper onClick={() => setNotificationsOpen(prev => !prev)}>
           <FiBell size={22} />
           <span className="badge">1</span>
         </NotificationWrapper>
@@ -93,6 +113,9 @@ const Header = () => {
           <AdminName>Admin</AdminName>
           <FiChevronDown color="#6b7280" />
         </ProfileWrapper>
+
+        {/* Agar state true hai to dropdown dikhayein */}
+        {isNotificationsOpen && <NotificationsDropdown ref={dropdownRef} />}
       </ActionItems>
     </HeaderContainer>
   );
