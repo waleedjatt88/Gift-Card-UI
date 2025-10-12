@@ -1,31 +1,45 @@
 // src/pages/Login.jsx
-import React from 'react';
-import styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom'; // <-- useNavigate ko import karein
-
+import React from "react";
+import styled from "styled-components";
+import { Link, useNavigate } from "react-router-dom"; // <-- useNavigate ko import karein
 
 // Assets
-import loginBg from '../assets/images/login-bg.png'; 
-import logo from '../assets/icons/logo.png';
+import loginBg from "../assets/images/login-bg.png";
+import logo from "../assets/icons/logo.png";
 
 // Components
-import Input from '../components/common/Input';
-import Button from '../components/common/Button';
+import Input from "../components/common/Input";
+import Button from "../components/common/Button";
 
 // Icons
-import { FiMail, FiLock, FiLink, FiEye } from 'react-icons/fi';
+import { FiMail, FiLock, FiLink, FiEye } from "react-icons/fi";
 
 // Styled Components for Layout
-const LoginContainer = styled.div` /* No changes here */
-    display: flex; height: 100vh; width: 100%;
+const LoginContainer = styled.div`
+  /* No changes here */
+  display: flex;
+  height: 100vh;
+  width: 100%;
 `;
-const ImageSide = styled.div` /* No changes here */
-    width: 50%; background: url(${loginBg}) no-repeat center center; background-size: cover;
-    @media (max-width: 1024px) { display: none; }
+const ImageSide = styled.div`
+  /* No changes here */
+  width: 50%;
+  background: url(${loginBg}) no-repeat center center;
+  background-size: cover;
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `;
-const FormSide = styled.div` /* No changes here */
-    width: 50%; display: flex; align-items: center; justify-content: center; padding: 2rem;
-    @media (max-width: 1024px) { width: 100%; }
+const FormSide = styled.div`
+  /* No changes here */
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 
 // New and Updated Styles
@@ -59,14 +73,29 @@ const Subtitle = styled.p`
   text-align: left;
 `;
 
-const OptionsWrapper = styled.div` /* No changes here */
-    display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; font-size: 14px;
+const OptionsWrapper = styled.div`
+  /* No changes here */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 14px;
 `;
-const RememberMe = styled.div` /* No changes here */
-    display: flex; align-items: center; input { margin-right: 8px; }
+const RememberMe = styled.div`
+  /* No changes here */
+  display: flex;
+  align-items: center;
+  input {
+    margin-right: 8px;
+  }
 `;
 const ForgotLink = styled(Link)`
-    color: #7c3aed; font-weight: 600; text-decoration: none; &:hover { text-decoration: underline; }
+  color: #7c3aed;
+  font-weight: 600;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const ExtraIconsWrapper = styled.div`
@@ -80,13 +109,13 @@ const ExtraIconsWrapper = styled.div`
 
 // Main Login Component
 const Login = () => {
-     const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLoginSubmit = (event) => {
     event.preventDefault();
 
     console.log("Login successful, navigating to dashboard...");
-    navigate('/dashboard');
+    navigate("/dashboard");
   };
   return (
     <LoginContainer>
@@ -100,26 +129,22 @@ const Login = () => {
           <Title>Login to your Account</Title>
           <Subtitle>Welcome back! please enter your detail</Subtitle>
 
-          <form>
+          <form onSubmit={handleLoginSubmit}>
             <Input type="email" placeholder="Email" icon={<FiMail />} />
             <Input type="password" placeholder="Password" icon={<FiLock />} />
-            
+
             <OptionsWrapper>
               <RememberMe>
                 <input type="checkbox" id="remember" />
                 <label htmlFor="remember">Remember me</label>
               </RememberMe>
-                <ForgotLink to="/forgot-password">Forgot Password?</ForgotLink>
+              <ForgotLink to="/forgot-password">Forgot Password?</ForgotLink>
             </OptionsWrapper>
-            
+
             <Button>Login</Button>
           </form>
 
-          <ExtraIconsWrapper>
-            <FiLink size={20} />
-            <FiEye size={20} />
-          </ExtraIconsWrapper>
-
+          
         </FormWrapper>
       </FormSide>
     </LoginContainer>

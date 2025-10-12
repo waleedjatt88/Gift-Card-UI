@@ -1,10 +1,11 @@
 // src/components/layout/Header.jsx
 
-import React, { useState, useEffect, useRef } from 'react'; // <-- useState, useEffect, useRef ko import kiya
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { FiBell, FiChevronDown } from 'react-icons/fi';
 import avatar from '../../assets/images/avatar.png';
-import NotificationsDropdown from './NotificationsDropdown'; // <-- Naya component import kiya
+import NotificationsDropdown from './NotificationsDropdown';
+import ProfileDropdown from './ProfileDropdown'; // <-- Naya component import kiya
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -19,7 +20,10 @@ const ActionItems = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-  position: relative; /* Dropdown ko position dene ke liye yeh zaroori hai */
+`;
+
+const PositionedWrapper = styled.div`
+    position: relative; /* Dropdown ko position dene ke liye */
 `;
 
 const IconBox = styled.div`
@@ -27,7 +31,6 @@ const IconBox = styled.div`
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   padding: 10px;
-  position: relative;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -37,21 +40,15 @@ const IconBox = styled.div`
 `;
 
 const NotificationWrapper = styled(IconBox)`
+  position: relative;
   .badge {
     position: absolute;
-    top: -6px;
-    right: -6px;
+    top: -6px; right: -6px;
     background-color: #7c3aed;
-    color: white;
-    width: 20px;
-    height: 20px;
+    color: white; width: 20px; height: 20px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    font-weight: bold;
-    border: 2px solid white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: bold; border: 2px solid white;
   }
 `;
 
@@ -68,54 +65,55 @@ const ProfileWrapper = styled.div`
 `;
 
 const Avatar = styled.img`
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+  width: 32px; height: 32px; border-radius: 50%;
 `;
 
 const AdminName = styled.span`
-  font-weight: 600;
-  color: #374151;
+  font-weight: 600; color: #374151;
 `;
 
 // --- COMPONENT ---
 
 const Header = () => {
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
-  const dropdownRef = useRef(null); // Ref for the dropdown container
+  const [isProfileOpen, setProfileOpen] = useState(false);
+  
+  const notificationsRef = useRef(null);
+  const profileRef = useRef(null);
 
-  // "Click outside" ko handle karne ke liye
+  // Click outside ko handle karne ke liye
   useEffect(() => {
     function handleClickOutside(event) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (notificationsRef.current && !notificationsRef.current.contains(event.target)) {
         setNotificationsOpen(false);
       }
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setProfileOpen(false);
+      }
     }
-    // Event listener add karein
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      // Cleanup: component unmount hone par listener hata dein
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [dropdownRef]);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <HeaderContainer>
       <ActionItems>
-        {/* Notification bell par click se dropdown toggle hoga */}
-        <NotificationWrapper onClick={() => setNotificationsOpen(prev => !prev)}>
-          <FiBell size={22} />
-          <span className="badge">1</span>
-        </NotificationWrapper>
+        <PositionedWrapper ref={notificationsRef}>
+          <NotificationWrapper onClick={() => setNotificationsOpen(prev => !prev)}>
+            <FiBell size={22} />
+            <span className="badge">1</span>
+          </NotificationWrapper>
+          {isNotificationsOpen && <NotificationsDropdown />}
+        </PositionedWrapper>
 
-        <ProfileWrapper>
-          <Avatar src={avatar} alt="Admin" />
-          <AdminName>Admin</AdminName>
-          <FiChevronDown color="#6b7280" />
-        </ProfileWrapper>
-
-        {/* Agar state true hai to dropdown dikhayein */}
-        {isNotificationsOpen && <NotificationsDropdown ref={dropdownRef} />}
+        <PositionedWrapper ref={profileRef}>
+          <ProfileWrapper onClick={() => setProfileOpen(prev => !prev)}>
+            <Avatar src={avatar} alt="Admin" />
+            <AdminName>Admin</AdminName>
+            <FiChevronDown color="#6b7280" />
+          </ProfileWrapper>
+          {isProfileOpen && <ProfileDropdown />}
+        </PositionedWrapper>
       </ActionItems>
     </HeaderContainer>
   );

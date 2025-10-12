@@ -20,6 +20,10 @@ import UserDetailsPage from './pages/UserDetailsPage';
 import OrdersPage from './pages/OrdersPage';
 import GiftCardsPage from './pages/GiftCardsPage';
 import TotalBrandsPage from './pages/TotalBrandsPage';
+import ProfilePage from './pages/ProfilePage'; 
+import SettingsPage from './pages/SettingsPage'; 
+
+
 
 // Policies Pages
 import PoliciesListPage from './pages/policies/PoliciesListPage';
@@ -58,6 +62,8 @@ function App() {
             <Route path="/policies/create" element={<CreatePolicyPage />} />
             <Route path="/policies/view/:policyId" element={<ViewPolicyPage />} />
             <Route path="/policies/edit/:policyId" element={<EditPolicyPage />} />
+            <Route path="/profile" element={<ProfilePage />} /> 
+            <Route path="/settings" element={<SettingsPage />} />
           </Route>
           
           {/* Default Route */}
