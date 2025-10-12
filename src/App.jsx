@@ -1,18 +1,13 @@
-// src/App.jsx
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-
-// Layouts
 import DashboardLayout from './components/layout/DashboardLayout';
 
-// Auth Pages
 import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
 import CheckEmail from './pages/CheckEmail';
 import ResetPassword from './pages/ResetPassword';
 
-// Dashboard Pages
 import DashboardPage from './pages/DashboardPage';
 import CategoriesPage from './pages/CategoriesPage';
 import UsersPage from './pages/UsersPage';
@@ -24,14 +19,11 @@ import ProfilePage from './pages/ProfilePage';
 import SettingsPage from './pages/SettingsPage'; 
 
 
-
-// Policies Pages
 import PoliciesListPage from './pages/policies/PoliciesListPage';
 import CreatePolicyPage from './pages/policies/CreatePolicyPage';
 import ViewPolicyPage from './pages/policies/ViewPolicyPage';
 import EditPolicyPage from './pages/policies/EditPolicyPage';
 
-// Global Styles
 import GlobalStyles from './styles/GlobalStyles';
 
 function App() {
@@ -40,14 +32,11 @@ function App() {
       <GlobalStyles />
       <Router>
         <Routes>
-          {/* Auth Routes (Layout ke bahar) */}
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/check-email" element={<CheckEmail />} />
           <Route path="/reset-password" element={<ResetPassword />} />
 
-          {/* === DASHBOARD LAYOUT WRAPPER === */}
-          {/* Ab saare dashboard pages iske andar hain */}
           <Route element={<DashboardLayout />}>
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/categories" element={<CategoriesPage />} />
@@ -57,7 +46,6 @@ function App() {
             <Route path="/gift-cards" element={<GiftCardsPage />} />
             <Route path="/total-brands" element={<TotalBrandsPage />} />
             
-            {/* Policies ke routes bhi ab layout ke andar hain */}
             <Route path="/policies" element={<PoliciesListPage />} />
             <Route path="/policies/create" element={<CreatePolicyPage />} />
             <Route path="/policies/view/:policyId" element={<ViewPolicyPage />} />
@@ -66,7 +54,6 @@ function App() {
             <Route path="/settings" element={<SettingsPage />} />
           </Route>
           
-          {/* Default Route */}
           <Route path="/" element={<Navigate to="/dashboard" />} />
         </Routes>
       </Router>

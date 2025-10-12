@@ -1,16 +1,12 @@
-// src/components/layout/NotificationsDropdown.jsx
 
 import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 
-// --- MOCK DATA ---
 const notificationsData = [
     { id: 1, title: 'You have Create a new Category', description: 'Rehan with Email(abcd@gamil.com) has sent request for id approval' },
     { id: 2, title: 'Brands are Categorize', description: 'Ahmed with Email(abcd@gamil.com) has sent request for order cancel.' },
     { id: 3, title: 'You Have blocked Ahmed Ali', description: 'Service Provider has blocked by you.' },
 ];
-
-// --- STYLES ---
 
 const DropdownContainer = styled.div`
   position: absolute;
@@ -70,9 +66,6 @@ const ViewLink = styled.a`
   }
 `;
 
-// --- COMPONENT ---
-
-// We use forwardRef to get the ref from the parent (Header) for the "click outside" logic
 const NotificationsDropdown = forwardRef((props, ref) => {
   return (
     <DropdownContainer ref={ref}>

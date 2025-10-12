@@ -1,4 +1,3 @@
-// src/pages/policies/ViewPolicyPage.jsx
 
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,7 +7,6 @@ import { FiEdit, FiTrash2 } from 'react-icons/fi';
 import { deletePolicy } from '../../store/policiesSlice';
 import DeleteModal from '../../components/categories/DeleteModal';
 
-// --- STYLES ---
 
 const PageHeader = styled.div`
   display: flex;
@@ -59,7 +57,6 @@ const ContentContainer = styled.div`
   }
 `;
 
-// --- COMPONENT ---
 
 const ViewPolicyPage = () => {
     const { policyId } = useParams();
@@ -70,13 +67,12 @@ const ViewPolicyPage = () => {
         state.policies.policies.find(p => p.id === parseInt(policyId))
     );
     
-    // State for delete confirmation modal
     const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 
     const handleDeleteConfirm = () => {
         dispatch(deletePolicy({ id: parseInt(policyId) }));
         setDeleteModalOpen(false);
-        navigate('/policies'); // Go back to the list after deleting
+        navigate('/policies'); 
     };
 
     if (!policy) {
@@ -104,7 +100,6 @@ const ViewPolicyPage = () => {
             </PageHeader>
 
             <ContentContainer>
-                {/* ReactQuill content ko render karne ke liye dangerouslySetInnerHTML use karna parta hai */}
                 <div dangerouslySetInnerHTML={{ __html: policy.description }} />
             </ContentContainer>
 

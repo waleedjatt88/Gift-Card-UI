@@ -1,32 +1,25 @@
-// src/pages/UserDetailsPage.jsx
 
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FiMail, FiPhone, FiMapPin, FiChevronRight } from 'react-icons/fi';
+import Pagination from '../components/common/Pagination'; 
+import OrderHistoryTable from '../components/orders/OrderHistoryTable'; 
+import ReceiverDetailModal from '../components/orders/ReceiverDetailModal'; 
 
-// --- COMPONENTS ---
-import Pagination from '../components/common/Pagination'; // Yeh ab OrderHistoryTable mein use ho raha hai, lekin yahan rakh sakte hain
-import OrderHistoryTable from '../components/orders/OrderHistoryTable'; // <-- Naya component import kiya
-import ReceiverDetailModal from '../components/orders/ReceiverDetailModal'; // <-- Naya modal import kiya
-
-// --- ASSETS ---
 import userAvatar from '../assets/images/avatar2.png';
 import totalCardsIcon from '../assets/icons/total-cards-icon.png';
 import myCardsIcon from '../assets/icons/my-cards-icon.png';
 import giftedCardsIcon from '../assets/icons/gifted-cards-icon.png';
 
-// --- MOCK DATA ---
 const user = { id: 1, name: 'Yasmany B', email: 'ybtrff5@gmail.co', phone: '9876567876', address: '456 Park Avenue, New York, NY 10022', avatar: userAvatar };
-const orderHistoryData = [ // Renamed to avoid confusion
+const orderHistoryData = [ 
     { id: 1, cardId: '325256', date: 'Mar 4, 2024 6:37 AM', brand: 'J.', amount: '$10', giftFor: 'Myself', status: 'Available' },
     { id: 2, cardId: '234234', date: 'Mar 4, 2024 6:37 AM', brand: 'KFC', amount: '$100', giftFor: 'Wassi', status: 'Used' },
     { id: 3, cardId: '345345', date: 'Mar 4, 2024 6:37 AM', brand: 'McDonald', amount: '$35', giftFor: 'Myself', status: 'Used' },
     { id: 4, cardId: '546434', date: 'Mar 4, 2024 6:37 AM', brand: 'LV', amount: '$70', giftFor: 'My Friend', status: 'Available' },
     { id: 5, cardId: '788665', date: 'Mar 4, 2024 6:37 AM', brand: 'Gucci', amount: '$23', giftFor: 'Myself', status: 'Used' },
 ];
-
-// --- STYLES (Table wale styles yahan se hata diye gaye hain) ---
 
 const PageWrapper = styled.div`
   display: flex;
@@ -194,16 +187,13 @@ const Button = styled.button`
   color: ${props => props.primary ? '#fff' : '#374151'};
 `;
 
-// --- COMPONENT ---
 
 const UserDetailsPage = () => {
   const { userId } = useParams();
 
-  // NEW: Modal ke liye state variables
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(null);
 
-  // NEW: Modal ko open karne ke liye function
   const handleViewDetailsClick = (order) => {
     setSelectedOrder(order);
     setModalOpen(true);
@@ -284,19 +274,17 @@ const UserDetailsPage = () => {
           <OrderHistoryTable 
             orders={orderHistoryData} 
             totalItems={738}
-            showUserColumn={false} // Users column nahi dikhana
-            showActions={true}    // Actions column dikhana hai
+            showUserColumn={false} 
+            showActions={true}    
             onViewClick={handleViewDetailsClick}
           />
       </div>
 
-
-      {/* NEW: Modal ko yahan render kiya */}
       <ReceiverDetailModal 
         isOpen={isModalOpen}
         onClose={() => setModalOpen(false)}
         order={selectedOrder}
-        user={user} // Receiver ki details ke liye user object pass kiya
+        user={user} 
       />
     </PageWrapper>
   );

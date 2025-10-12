@@ -1,12 +1,9 @@
-// src/pages/SettingsPage.jsx
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FiLock } from 'react-icons/fi';
-import Input from '../components/common/Input'; // Reusing our password input
-import ToggleSwitch from '../components/common/ToggleSwitch'; // Our new toggle switch
-
-// --- STYLES ---
+import Input from '../components/common/Input'; 
+import ToggleSwitch from '../components/common/ToggleSwitch'; 
 
 const PageWrapper = styled.div`
   display: flex;
@@ -99,7 +96,6 @@ const UpdateButton = styled.button`
 `;
 
 
-// --- COMPONENT ---
 
 const SettingsPage = () => {
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
@@ -116,7 +112,6 @@ const SettingsPage = () => {
         </ContentHeader>
 
         <SettingsGrid>
-          {/* Left Section for Password */}
           <Section>
             <SectionTitle>Profile Picture</SectionTitle>
             <InputGroup>
@@ -136,7 +131,6 @@ const SettingsPage = () => {
             </InputGroup>
           </Section>
 
-          {/* Right Section for Notifications */}
           <Section>
             <SectionTitle>Notifications</SectionTitle>
             <NotificationSetting>

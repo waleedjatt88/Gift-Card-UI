@@ -1,4 +1,3 @@
-// src/pages/UsersPage.jsx
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -6,7 +5,6 @@ import { FiSearch, FiEye, FiTrash2 } from 'react-icons/fi';
 import DeleteModal from '../components/categories/DeleteModal';
 import Pagination from '../components/common/Pagination';
 
-// --- STYLES ---
 
 const PageHeader = styled.div`
   margin-bottom: 2rem;
@@ -121,7 +119,6 @@ const ActionButtons = styled.div`
   .delete { background-color: #ef4444; } /* Red */
 `;
 
-// --- MOCK DATA ---
 const usersData = [
   { id: 1, name: 'Ali Ahmed', email: 'abcd@gmail.com', phone: '+1234567891011' },
   { id: 2, name: 'Wassi Ahsan', email: 'abcd@gmail.com', phone: '+1234567891011' },
@@ -133,7 +130,6 @@ const usersData = [
   { id: 8, name: 'Waqas', email: 'abcd@gmail.com', phone: '+1234567891011' },
 ];
 
-// --- COMPONENT ---
 const UsersPage = () => {
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
@@ -145,7 +141,6 @@ const UsersPage = () => {
   };
   
   const confirmDelete = () => {
-    // Logic to delete user
     console.log("Deleting user:", userToDelete.name);
     setDeleteModalOpen(false);
     setUserToDelete(null);

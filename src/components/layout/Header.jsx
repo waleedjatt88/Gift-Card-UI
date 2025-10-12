@@ -1,11 +1,10 @@
-// src/components/layout/Header.jsx
 
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { FiBell, FiChevronDown } from 'react-icons/fi';
 import avatar from '../../assets/images/avatar.png';
 import NotificationsDropdown from './NotificationsDropdown';
-import ProfileDropdown from './ProfileDropdown'; // <-- Naya component import kiya
+import ProfileDropdown from './ProfileDropdown'; 
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -72,7 +71,6 @@ const AdminName = styled.span`
   font-weight: 600; color: #374151;
 `;
 
-// --- COMPONENT ---
 
 const Header = () => {
   const [isNotificationsOpen, setNotificationsOpen] = useState(false);
@@ -81,7 +79,6 @@ const Header = () => {
   const notificationsRef = useRef(null);
   const profileRef = useRef(null);
 
-  // Click outside ko handle karne ke liye
   useEffect(() => {
     function handleClickOutside(event) {
       if (notificationsRef.current && !notificationsRef.current.contains(event.target)) {

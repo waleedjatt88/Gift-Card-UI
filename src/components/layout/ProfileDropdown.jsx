@@ -1,11 +1,9 @@
-// src/components/layout/ProfileDropdown.jsx
 
 import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import { FiUser, FiSettings, FiLogOut } from 'react-icons/fi';
 
-// --- STYLES ---
 
 const DropdownContainer = styled.div`
   position: absolute;
@@ -67,13 +65,10 @@ const Divider = styled.hr`
   margin: 0.5rem 0;
 `;
 
-// --- COMPONENT ---
-
 const ProfileDropdown = forwardRef((props, ref) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Yahan logout ka logic aayega, jaise token clear karna etc.
     console.log("Logging out...");
     navigate('/login');
   };
@@ -85,7 +80,7 @@ const ProfileDropdown = forwardRef((props, ref) => {
           <FiUser />
           My Profile
         </MenuItem>
-        <MenuItem to="/settings"> {/* Yeh route hum baad mein banayeinge */}
+        <MenuItem to="/settings"> 
           <FiSettings />
           Settings
         </MenuItem>

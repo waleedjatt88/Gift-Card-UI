@@ -1,11 +1,9 @@
-// src/components/layout/Sidebar.jsx
 
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import giftCardLogo from '../../assets/icons/logowhite.png'; // Make sure the logo includes "GIFT CARD" text
+import giftCardLogo from '../../assets/icons/logowhite.png'; 
 
-// Icons
 import { FiGrid, FiList, FiUsers, FiShoppingBag, FiCreditCard, FiTag, FiFileText } from 'react-icons/fi';
 
 const SidebarContainer = styled.aside`
@@ -26,7 +24,6 @@ const LogoContainer = styled.div`
   margin-bottom: 1.5rem;
 `;
 
-// CHANGE: Logo image ab poori width le rahi hai
 const Logo = styled.img`
   height: 45px; // Adjust height as needed
 `;
@@ -75,7 +72,6 @@ const Sidebar = () => {
   return (
     <SidebarContainer>
         <LogoContainer>
-            {/* CHANGE: Humne alag se text hata diya hai, ab logo ki image mein hi text shamil hoga */}
             <Logo src={giftCardLogo} alt="Gift Card Logo" />
         </LogoContainer>
         <MenuList>

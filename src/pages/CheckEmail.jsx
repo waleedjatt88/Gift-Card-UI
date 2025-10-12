@@ -1,15 +1,12 @@
-// src/pages/CheckEmail.jsx
 
 import React from 'react';
 import styled from 'styled-components';
 
-// Assets
 import loginBg from '../assets/images/login-bg.png'; 
 import logo from '../assets/icons/logo.png';
-import illustration from '../assets/images/check-email-illustration.png'; // Apna naya asset import karein
+import illustration from '../assets/images/check-email-illustration.png'; 
 
-// --- STYLES ---
-// Layout styles (pehle se banaye hue)
+
 const PageContainer = styled.div`
   display: flex;
   height: 100vh;
@@ -48,7 +45,6 @@ const Logo = styled.img`
   height: 40px;
 `;
 
-// Naye styles is page ke content ke liye
 const CenteredContent = styled.div`
     text-align: center;
     padding: 2rem 0;
@@ -87,7 +83,6 @@ const ResendText = styled.p`
 `;
 
 
-// --- COMPONENT ---
 const CheckEmail = () => {
   return (
     <PageContainer>

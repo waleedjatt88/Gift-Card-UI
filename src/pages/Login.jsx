@@ -1,20 +1,13 @@
-// src/pages/Login.jsx
 import React from "react";
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom"; // <-- useNavigate ko import karein
+import { Link, useNavigate } from "react-router-dom"; 
 
-// Assets
 import loginBg from "../assets/images/login-bg.png";
 import logo from "../assets/icons/logo.png";
-
-// Components
 import Input from "../components/common/Input";
 import Button from "../components/common/Button";
-
-// Icons
 import { FiMail, FiLock, FiLink, FiEye } from "react-icons/fi";
 
-// Styled Components for Layout
 const LoginContainer = styled.div`
   /* No changes here */
   display: flex;

@@ -1,11 +1,9 @@
-// src/components/orders/OrderHistoryTable.jsx
 
 import React from 'react';
 import styled from 'styled-components';
 import Pagination from '../common/Pagination';
 import { FiEye } from 'react-icons/fi';
 
-// --- STYLES (No changes here) ---
 
 const TableContainer = styled.div`
   background: #fff;
@@ -62,9 +60,6 @@ const ActionButton = styled.button`
     }
 `;
 
-// --- COMPONENT ---
-
-// UPDATED: Now accepts 'onViewClick' as a prop
 const OrderHistoryTable = ({ orders, totalItems, onViewClick }) => {
   return (
     <div>
@@ -97,7 +92,6 @@ const OrderHistoryTable = ({ orders, totalItems, onViewClick }) => {
                       </StatusTag>
                     </td>
                     <td>
-                      {/* UPDATED: onClick now calls the function passed from the parent */}
                       <ActionButton onClick={() => onViewClick(order)}>
                         <FiEye />
                       </ActionButton>

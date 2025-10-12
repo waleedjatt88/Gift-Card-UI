@@ -1,13 +1,10 @@
-// src/components/brands/AssignCategoryModal.jsx
 
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Modal from '../common/Modal';
-import CustomMultiSelect from '../common/CustomMultiSelect'; // Our new component
+import CustomMultiSelect from '../common/CustomMultiSelect'; 
 import { FiTag, FiFilm, FiBriefcase, FiZap, FiCpu, FiLock, FiTrello, FiFeather } from 'react-icons/fi';
 
-// --- MOCK CATEGORY OPTIONS (Complete) ---
-// Note: Yeh data humne Categories page mein bhi use kiya tha.
 const categoryOptions = [
     { id: 1, name: 'Cloth', icon: <FiTag/>, color: '#ef4444' },
     { id: 2, name: 'Entertainments', icon: <FiFilm/>, color: '#f59e0b' },
@@ -18,8 +15,6 @@ const categoryOptions = [
     { id: 7, name: 'Shoes', icon: <FiTrello/>, color: '#3b82f6' },
     { id: 8, name: 'Food', icon: <FiFeather/>, color: '#f97316' },
 ];
-
-// --- STYLES (Complete) ---
 
 const ModalHeader = styled.div`
   background-color: #1a0033; /* Dark Purple */
@@ -104,22 +99,17 @@ const ColorPicker = styled.div`
   }
 `;
 
-// --- COMPONENT (Complete) ---
 
 const AssignCategoryModal = ({ isOpen, onClose, brand }) => {
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [selectedColor, setSelectedColor] = useState('#000000');
 
-    // useEffect hook brand data change hone par state ko update karega
     useEffect(() => {
         if (brand && isOpen) {
-            // Set initial state from the brand prop when modal opens
             setSelectedCategories(brand.assignedCategories || []);
             setSelectedColor(brand.color || '#000000');
         }
-    }, [brand, isOpen]); // Rerun effect if brand or isOpen changes
-
-    // Agar brand ka data nahi hai, to modal ko render na karein
+    }, [brand, isOpen]); 
     if (!brand) return null;
 
     return (

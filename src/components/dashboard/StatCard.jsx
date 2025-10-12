@@ -1,8 +1,7 @@
-// src/components/dashboard/StatCard.jsx
 
 import React from 'react';
 import styled from 'styled-components';
-import trendIcon from '../../assets/icons/dashboard/trend-icon.png'; // Trend icon ko SVG mein export karein to behtar hai
+import trendIcon from '../../assets/icons/dashboard/trend-icon.png'; 
 
 const Card = styled.div`
   background-color: #fff;

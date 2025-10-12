@@ -1,11 +1,9 @@
-// src/pages/CategoriesPage.jsx
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FiPlus, FiSearch, FiEdit, FiTrash2, FiTag, FiFilm, FiBriefcase, FiZap, FiCpu, FiLock, FiTrello, FiFeather } from 'react-icons/fi';
 import AddCategoryModal from '../components/categories/AddCategoryModal';
 import DeleteModal from '../components/categories/DeleteModal';
 
-// --- STYLES ---
 const PageWrapper = styled.div`
   // Main wrapper styles if any
 `;
@@ -105,7 +103,6 @@ const ActionButtons = styled.div`
   .delete { background-color: #ef4444; }
 `;
 
-// --- Mock Data ---
 const initialCategories = [
     { id: 1, name: 'Cloth', icon: <FiTag/>, color: '#ef4444' },
     { id: 2, name: 'Entertainments', icon: <FiFilm/>, color: '#f59e0b' },
@@ -117,7 +114,6 @@ const initialCategories = [
     { id: 8, name: 'Food', icon: <FiFeather/>, color: '#f97316' },
 ];
 
-// --- COMPONENT ---
 const CategoriesPage = () => {
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -178,7 +174,6 @@ const CategoriesPage = () => {
         </Table>
       </TableContainer>
       
-      {/* Modals */}
       <AddCategoryModal isOpen={isAddModalOpen} onClose={() => setAddModalOpen(false)} />
       <DeleteModal 
         isOpen={isDeleteModalOpen} 

@@ -1,10 +1,8 @@
-// src/pages/OrdersPage.jsx
 
 import React from 'react';
 import styled from 'styled-components';
 import OrderHistoryTable from '../components/orders/OrderHistoryTable';
 
-// --- MOCK DATA (With a new 'user' property) ---
 const ordersData = [
     { id: 1, cardId: '325256', date: 'Mar 4, 2024 6:37 AM', user: 'Waqar', brand: 'J.', amount: '$10', giftFor: 'Myself', status: 'Available' },
     { id: 2, cardId: '234234', date: 'Mar 4, 2024 6:37 AM', user: 'Ahmed', brand: 'KFC', amount: '$100', giftFor: 'Waqar Ali', status: 'Available' },
@@ -13,7 +11,6 @@ const ordersData = [
     { id: 5, cardId: '788665', date: 'Mar 4, 2024 6:37 AM', user: 'Wassi', brand: 'Gucci', amount: '$23', giftFor: 'Myself', status: 'Available' },
 ];
 
-// --- STYLES ---
 const PageHeader = styled.div`
   margin-bottom: 2rem;
   h1 { font-size: 1.875rem; font-weight: 600; }
@@ -25,7 +22,6 @@ const SectionTitle = styled.h3`
   margin-bottom: 1rem;
 `;
 
-// Copy-pasted from UserDetailsPage and simplified
 const FilterBar = styled.div`
   background: #fff;
   padding: 1.5rem;
@@ -103,7 +99,6 @@ const Button = styled.button`
   color: ${props => props.primary ? '#fff' : '#374151'};
 `;
 
-// --- COMPONENT ---
 const OrdersPage = () => {
   return (
     <div>
@@ -149,8 +144,8 @@ const OrdersPage = () => {
             <OrderHistoryTable 
                 orders={ordersData} 
                 totalItems={738}
-                showUserColumn={true} // Users column dikhana hai
-                showActions={false}   // Actions column nahi dikhana
+                showUserColumn={true} 
+                showActions={false}   
             />
         </div>
     </div>

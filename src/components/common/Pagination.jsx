@@ -1,4 +1,3 @@
-// src/components/common/Pagination.jsx
 import React from 'react';
 import styled from 'styled-components';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';

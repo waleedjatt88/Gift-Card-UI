@@ -48,11 +48,10 @@ const Input = ({ type, placeholder, icon, name }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const toggleVisibility = (e) => {
-    e.preventDefault(); // Form submit hone se rokein
+    e.preventDefault(); 
     setIsPasswordVisible(!isPasswordVisible);
   };
 
-  // Agar type password hai to input ka type state ke hisab se change hoga
   const inputType = type === 'password' && isPasswordVisible ? 'text' : type;
 
   return (

@@ -1,4 +1,3 @@
-// src/components/categories/AddCategoryModal.jsx
 import React from 'react';
 import styled from 'styled-components';
 import Modal from '../common/Modal';

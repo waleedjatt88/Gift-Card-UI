@@ -1,11 +1,9 @@
-// src/pages/ProfilePage.jsx
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FiX } from 'react-icons/fi';
-import profileAvatar from '../assets/images/avatar.png'; // Make sure path is correct
+import profileAvatar from '../assets/images/avatar.png'; 
 
-// --- MOCK DATA ---
 const initialProfileData = {
     name: 'Jennifer Taylor',
     email: 'admin@gmail.com',
@@ -14,7 +12,6 @@ const initialProfileData = {
     picture: profileAvatar,
 };
 
-// --- STYLES ---
 
 const PageWrapper = styled.div`
   display: flex;
@@ -120,10 +117,7 @@ const ButtonContainer = styled.div`
   margin-top: 2rem;
 `;
 
-const UpdateButton = styled(EditButton)``; // Inherits styles from EditButton
-
-// --- COMPONENT ---
-
+const UpdateButton = styled(EditButton)``; 
 const ProfilePage = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState(initialProfileData);
@@ -134,9 +128,8 @@ const ProfilePage = () => {
   };
 
   const handleUpdateProfile = () => {
-    // Yahan API call hogi data ko save karne ke liye
     console.log("Profile Updated:", profileData);
-    setIsEditing(false); // Edit mode se bahar aa jayein
+    setIsEditing(false); 
   };
 
   return (

@@ -1,10 +1,8 @@
-// src/pages/GiftCardsPage.jsx
 
 import React from 'react';
 import styled from 'styled-components';
-import Pagination from '../components/common/Pagination'; // Reusing pagination
+import Pagination from '../components/common/Pagination'; 
 
-// --- MOCK DATA ---
 const giftCardsData = [
     { id: 1, cardId: '325256', cardName: 'KFC', brandName: 'KFC', amount: '$1', country: 'Pakistan' },
     { id: 2, cardId: '234234', cardName: 'KFC', brandName: 'KFC', amount: '$10', country: 'India' },
@@ -13,7 +11,6 @@ const giftCardsData = [
     { id: 5, cardId: '788665', cardName: 'J.', brandName: 'J.', amount: '$60', country: 'United Kingdom' },
 ];
 
-// --- STYLES (Reused from previous pages) ---
 
 const PageHeader = styled.div`
   margin-bottom: 2rem;
@@ -76,7 +73,6 @@ const Table = styled.table`
   tbody tr:last-child { border-bottom: none; }
 `;
 
-// --- COMPONENT ---
 
 const GiftCardsPage = () => {
   return (

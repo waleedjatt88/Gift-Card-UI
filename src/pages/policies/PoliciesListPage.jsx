@@ -1,10 +1,9 @@
-// src/pages/policies/PoliciesListPage.jsx
 
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { FiEye, FiEdit, FiTrash2, FiPlus } from 'react-icons/fi'; // <-- FiTrash2 ko add kiya
+import { FiEye, FiEdit, FiTrash2, FiPlus } from 'react-icons/fi';
 import DeleteModal from '../../components/categories/DeleteModal';
 import { deletePolicy } from '../../store/policiesSlice';
 
@@ -15,8 +14,6 @@ const PageHeader = styled.div`
   margin-bottom: 2rem;
   h1 { font-size: 1.875rem; font-weight: 600; }
 `;
-
-// Note: Is page mein "Add New" button nahi hai design ke mutabiq
 
 const PolicyCard = styled.div`
   background: #fff;
@@ -64,10 +61,6 @@ const ActionButtons = styled.div`
 const PoliciesListPage = () => {
     const policies = useSelector((state) => state.policies.policies);
     const navigate = useNavigate();
-    
-    // Note: Is design mein add/delete buttons list page par nahi hain.
-    // User "Edit" par click karke details page par jata hai jahan se delete kar sakta hai.
-    // "Create" ka button bhi alag page par ho sakta hai. Hum design follow kar rahe hain.
     
     return (
         <div>

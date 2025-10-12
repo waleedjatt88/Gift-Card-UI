@@ -1,11 +1,9 @@
-// src/pages/DashboardPage.jsx
 
 import React from 'react';
 import styled from 'styled-components';
 import StatCard from '../components/dashboard/StatCard';
 import SalesChart from '../components/dashboard/SalesChart';
 
-// --- ICONS (Yeh aapko figma se export karke src/assets/icons/dashboard/ folder mein rakhne hain) ---
 import iconTotalUsers from '../assets/icons/dashboard/total-users.png';
 import iconNoOfCards from '../assets/icons/dashboard/no-of-cards.png';
 import iconTotalRevenue from '../assets/icons/dashboard/total-revenue.png';
@@ -18,7 +16,6 @@ import iconTotalBrand from '../assets/icons/dashboard/total-brand.png';
 import iconCategorizeBrands from '../assets/icons/dashboard/categorize-brands.png';
 import iconUncategorizeBrand from '../assets/icons/dashboard/uncategorize-brand.png';
 
-// --- STYLES (Updated Grid) ---
 const StatsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 columns for large screens */
@@ -37,9 +34,7 @@ const StatsGrid = styled.div`
   }
 `;
 
-// --- COMPONENT ---
 const DashboardPage = () => {
-  // UPDATED: Data with new icons and colors
   const stats = [
     { icon: iconTotalUsers, title: 'Total Users', value: '2123k', color: { bg: '#EFE5FF' } },
     { icon: iconNoOfCards, title: 'No of Cards', value: '12323k', color: { bg: '#E5F7FF' } },
@@ -56,7 +51,6 @@ const DashboardPage = () => {
 
   return (
     <div>
-      {/* <h1>Dashboard</h1> ko hata diya gaya hai design ke mutabiq */}
       <StatsGrid>
         {stats.map(stat => (
           <StatCard 
@@ -64,7 +58,7 @@ const DashboardPage = () => {
             icon={stat.icon} 
             title={stat.title} 
             value={stat.value}
-            color={stat.color} // <-- Color prop ko pass kiya
+            color={stat.color} 
           />
         ))}
       </StatsGrid>

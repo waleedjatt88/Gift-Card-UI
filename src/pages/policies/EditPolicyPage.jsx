@@ -1,13 +1,11 @@
-// src/pages/policies/EditPolicyPage.jsx
 
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { updatePolicy } from '../../store/policiesSlice';
-import TextEditor from '../../components/common/TextEditor'; // Reusing our Text Editor
+import TextEditor from '../../components/common/TextEditor'; 
 
-// --- STYLES (Adapted from previous pages) ---
 
 const PageHeader = styled.div`
   display: flex;
@@ -58,31 +56,26 @@ const Button = styled.button`
   align-self: flex-end; /* Button ko right side par rakhega */
 `;
 
-// --- COMPONENT ---
 
 const EditPolicyPage = () => {
-    const { policyId } = useParams(); // URL se policy ka ID hasil karein
+    const { policyId } = useParams(); 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    // Redux store se policy ka data find karein
     const policy = useSelector(state => 
         state.policies.policies.find(p => p.id === parseInt(policyId))
     );
     
-    // Form fields ke liye state
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
 
-    // Jab policy ka data Redux se load ho jaye, to form fields ko us data se set karein
     useEffect(() => {
         if (policy) {
             setName(policy.name);
             setDescription(policy.description);
         }
-    }, [policy]); // Yeh effect tab chalega jab 'policy' object change hoga
+    }, [policy]); 
 
-    // "Update" button par click hone par chalne wala function
     const handleUpdate = () => {
         if (name.trim() && description.trim()) {
             dispatch(updatePolicy({
@@ -90,13 +83,12 @@ const EditPolicyPage = () => {
                 name,
                 description,
             }));
-            navigate('/policies'); // Update karne ke baad wapis list page par bhej dein
+            navigate('/policies'); 
         } else {
             alert("Policy name and description cannot be empty.");
         }
     };
 
-    // Agar policy ID ghalat ho aur data na mile
     if (!policy) {
         return <div>Policy not found.</div>;
     }

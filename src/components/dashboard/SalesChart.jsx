@@ -1,4 +1,3 @@
-// src/components/dashboard/SalesChart.jsx
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -65,7 +64,6 @@ const DateRange = styled.div`
   color: #4b5563;
 `;
 
-// NEW: ApplyButton ko yahan define kiya gaya hai
 const ApplyButton = styled.button`
     background: #7c3aed;
     color: #fff;
@@ -116,7 +114,6 @@ const SalesChart = () => {
                 <Title>Sales Statistics</Title>
                 <ControlsWrapper>
                     <Tabs>
-                        {/* UPDATED: 'active' ko '$active' kar diya gaya hai */}
                         <TabButton 
                             $active={activeTab === 'Sales'} 
                             onClick={() => setActiveTab('Sales')}
@@ -134,7 +131,6 @@ const SalesChart = () => {
                         <FiCalendar />
                         <span>08-Feb-2024 to 14-Feb-2024</span>
                     </DateRange>
-                    {/* Ab yeh button kaam karega */}
                     <ApplyButton>Apply</ApplyButton>
                 </ControlsWrapper>
             </ChartHeader>

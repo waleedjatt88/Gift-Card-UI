@@ -1,21 +1,13 @@
-// src/pages/ForgotPassword.jsx
 
 import React from 'react';
 import styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom'; // useNavigate pehle se import hai, good!
-
-// Assets (wahi jo login mein use ki thin)
+import { Link, useNavigate } from 'react-router-dom'; 
 import loginBg from '../assets/images/login-bg.png'; 
 import logo from '../assets/icons/logo.png';
-
-// Reusable Components
 import Input from '../components/common/Input';
 import Button from '../components/common/Button';
-
-// Icons
 import { FiMail } from 'react-icons/fi';
 
-// --- STYLES (Inmein koi change nahi) ---
 const PageContainer = styled.div`
   display: flex;
   height: 100vh;
@@ -82,17 +74,13 @@ const BackLink = styled(Link)`
   }
 `;
 
-// --- COMPONENT ---
 const ForgotPassword = () => {
-  // <-- CHANGE 1: useNavigate hook ko initialize kiya
   const navigate = useNavigate();
 
-  // <-- CHANGE 2: Form submit ko handle karne ke liye function banaya
   const handleContinueClick = (event) => {
-    event.preventDefault(); // Page ko reload hone se rokta hai
+    event.preventDefault(); 
     
-    // Yahan API call ka logic aayega
-    // Call successful hone ke baad, hum agle page par navigate karenge
+    
     navigate('/check-email');
   };
 
@@ -110,8 +98,6 @@ const ForgotPassword = () => {
             Enter the email address associated with your account and 
             we will send you a link to reset your password.
           </Subtitle>
-
-          {/* <-- CHANGE 3: form tag mein onSubmit event lagaya */}
           <form onSubmit={handleContinueClick}>
             <Input type="email" placeholder="Angela.lau" icon={<FiMail />} />
             <Button>Continue</Button>

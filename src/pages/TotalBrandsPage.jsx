@@ -1,12 +1,9 @@
-// src/pages/TotalBrandsPage.jsx
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Pagination from '../components/common/Pagination';
 import AssignCategoryModal from '../components/brands/AssignCategoryModal';
 import { FiSearch, FiEdit } from 'react-icons/fi';
-
-// --- ASSETS (Make sure you have these images in the specified path) ---
 import kfcLogo from '../assets/images/kfc.png';
 import ckLogo from '../assets/images/ck.png';
 import mcdonaldsLogo from '../assets/images/mcdonalds.png';
@@ -14,7 +11,6 @@ import amazonLogo from '../assets/images/amazon.png';
 import zaraLogo from '../assets/images/zara.png';
 
 
-// --- MOCK DATA (As per the screenshot) ---
 const brandsData = [
     { id: 1, logo: kfcLogo, name: 'KFC', color: '#874985', assignedCategories: [{id: 1, name: 'Food'}] },
     { id: 2, logo: ckLogo, name: 'Calvin Kelvin', color: '#ffffff', assignedCategories: [{id: 2, name: 'Cloth'}, {id: 3, name: 'Shoes'}] },
@@ -23,7 +19,6 @@ const brandsData = [
     { id: 5, logo: zaraLogo, name: 'Zara', color: '#074D88', assignedCategories: [{id: 5, name: 'Bags'}] },
 ];
 
-// --- STYLES (Complete) ---
 
 const PageHeader = styled.div`
   margin-bottom: 2rem;
@@ -142,7 +137,6 @@ const ActionButton = styled.button`
   background-color: #f59e0b; /* Orange for edit */
 `;
 
-// --- COMPONENT ---
 const TotalBrandsPage = () => {
     const [activeTab, setActiveTab] = useState('Categories');
     const [isModalOpen, setModalOpen] = useState(false);

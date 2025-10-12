@@ -1,21 +1,13 @@
-// src/pages/ResetPassword.jsx
 
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-
-// Assets
 import loginBg from '../assets/images/login-bg.png'; 
 import logo from '../assets/icons/logo.png';
-
-// Reusable Components
 import Input from '../components/common/Input';
 import Button from '../components/common/Button';
-
-// Icons
 import { FiLock } from 'react-icons/fi';
 
-// --- STYLES (Ye sab pehle se banaye hue hain) ---
 const PageContainer = styled.div`
   display: flex;
   height: 100vh;
@@ -68,15 +60,12 @@ const Subtitle = styled.p`
   text-align: left;
 `;
 
-// --- COMPONENT ---
 const ResetPassword = () => {
   const navigate = useNavigate();
 
   const handleConfirm = (event) => {
     event.preventDefault();
-    // Yahan password update karne ki API call hogi.
-    // Successful hone par, user ko login page par bhej denge.
-    alert("Password has been reset successfully!"); // User ko feedback dene ke liye
+    alert("Password has been reset successfully!"); 
     navigate('/login');
   };
 

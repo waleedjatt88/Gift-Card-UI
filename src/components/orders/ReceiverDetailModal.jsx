@@ -1,15 +1,12 @@
-// src/components/orders/ReceiverDetailModal.jsx
 
 import React from 'react';
 import styled from 'styled-components';
-import Modal from '../common/Modal'; // Reusing our base modal
+import Modal from '../common/Modal'; 
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 
-// Assets
-import cardBg from '../../assets/images/mcdonalds-card.png'; // McDonald's card image
-import userAvatar from '../../assets/images/avatar2.png'; // Receiver's avatar
+import cardBg from '../../assets/images/mcdonalds-card.png';
+import userAvatar from '../../assets/images/avatar2.png'; 
 
-// --- STYLES ---
 
 const ModalHeader = styled.div`
   background-color: #1a0033; /* Dark Purple */
@@ -96,10 +93,8 @@ const ReceiverDetails = styled.div`
   }
 `;
 
-// --- COMPONENT ---
 
 const ReceiverDetailModal = ({ isOpen, onClose, order, user }) => {
-  // Guard clause: agar modal open nahi hai ya data nahi hai to kuch na dikhayein
   if (!isOpen || !order || !user) {
     return null;
   }
@@ -112,7 +107,6 @@ const ReceiverDetailModal = ({ isOpen, onClose, order, user }) => {
       <ModalBody>
         <GiftCardImage bg={cardBg}>
             <CardAmount>{order.amount}</CardAmount>
-            {/* Isko dynamic kar sakte hain agar brand image alag ho */}
             <CardBrand>{order.brand}</CardBrand>
         </GiftCardImage>
 
