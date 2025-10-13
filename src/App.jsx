@@ -54,7 +54,7 @@ function App() {
             <Route path="/settings" element={<SettingsPage />} />
           </Route>
           
-          <Route path="/" element={<Navigate to="/dashboard" />} />
+          <Route path="/" element={<Navigate to="/login" />} />
         </Routes>
       </Router>
     </>
